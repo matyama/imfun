@@ -1,6 +1,13 @@
 import cv2
 import numpy as np
 
+LINE_SIZE = 7
+BLUR_VALUE = 7
+COLORS = 9
+FILTER_DIAMETER = 7
+SIGMA_COLOR = 200
+SIGMA_SPACE = 200
+
 
 def edge_mask(img: np.ndarray, line_size: int, blur_value: int) -> np.ndarray:
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
@@ -15,7 +22,7 @@ def edge_mask(img: np.ndarray, line_size: int, blur_value: int) -> np.ndarray:
     )
 
 
-def color_quantization(img: np.ndarray, ncolors: int) -> np.ndarray:
+def color_quantization(img: np.ndarray, colors: int) -> np.ndarray:
     # Transform the image
     data = np.float32(img).reshape((-1, 3))
 
@@ -24,35 +31,35 @@ def color_quantization(img: np.ndarray, ncolors: int) -> np.ndarray:
 
     # Implementing K-Means
     ret, label, center = cv2.kmeans(
-        data, ncolors, None, criteria, 10, cv2.KMEANS_RANDOM_CENTERS
+        data, colors, None, criteria, 10, cv2.KMEANS_RANDOM_CENTERS
     )
     center = np.uint8(center)
     return center[label.flatten()].reshape(img.shape)
 
 
 def convert(
-    img: np.ndarray, line_size: int = 7, blur_value: int = 7, ncolors: int = 9
+    img: np.ndarray,
+    line_size: int = LINE_SIZE,
+    blur_value: int = BLUR_VALUE,
+    colors: int = COLORS,
+    filter_diameter: int = FILTER_DIAMETER,
+    sigma_color: int = SIGMA_COLOR,
+    sigma_space: int = SIGMA_SPACE,
 ) -> np.ndarray:
     """Converts an image to cartoon styled image"""
     # Create edge mask
     edges = edge_mask(img, line_size, blur_value)
 
     # Reduce the color palette
-    img = color_quantization(img, ncolors)
+    img = color_quantization(img, colors)
 
     # Apply bilateral filter
-    # TODO: add more params with default values
-    blurred = cv2.bilateralFilter(img, d=7, sigmaColor=200, sigmaSpace=200)
+    blurred = cv2.bilateralFilter(
+        img,
+        d=filter_diameter,
+        sigmaColor=sigma_color,
+        sigmaSpace=sigma_space,
+    )
 
     # Combine edge mask with the colored image
     return cv2.bitwise_and(blurred, blurred, mask=edges)
-
-
-def img2cartoon(in_img: str, out_img: str) -> None:
-    """
-    Reads an original image from `in_img` path, converts it to a cartoon
-    and saves it to `out_img` path.
-    """
-    img = cv2.imread(in_img)
-    cartoon_img = convert(img)
-    cv2.imwrite(out_img, cartoon_img)

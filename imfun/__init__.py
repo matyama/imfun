@@ -1,3 +1,3 @@
-from .lib import convert, img2cartoon
+from .lib import convert
 
-__all__ = [convert.__name__, img2cartoon.__name__]
+__all__ = [convert.__name__]

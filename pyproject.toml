@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "imfun"
 version = "0.1.0"
-description = "Convert image to cartoon"
+description = "Convert an image to cartoon"
 authors = ["Martin Matyášek <martin.matyasek@gmail.com>"]
 license = "MIT"
 readme = "README.md"

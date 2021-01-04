@@ -17,6 +17,5 @@ Cartoon image saved as 'examples/prague-castle-cartoon.png'
 ```
 
 ## Examples
-![Prague castle (original)](./examples/prague.jpg "Original Image")
-
-![Prague castle (cartoon)](./examples/prague-cartoon.jpg "Cartoon Image")
+<img src="./examples/prague.jpg" alt="Prague castle (original)" title="Original Image" width="300">
+<img src="./examples/prague-cartoon.jpg" alt="Prague castle (cartoon)" title="Cartoon Image" width="300">

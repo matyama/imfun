@@ -1,3 +1,5 @@
+![ImFun](https://github.com/matyama/imfun/workflows/ImFun/badge.svg)
+
 # ImFun
 Convert an image to cartoon!
 

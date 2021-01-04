@@ -1,4 +1,4 @@
-name: ImFun Application
+name: ImFun
 
 on:
   push:

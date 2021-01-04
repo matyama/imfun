@@ -26,6 +26,9 @@ pre-commit = "*"
 pytest = "*"
 pytest-cov = {version = "*", extras = ["toml"]}
 
+[tool.poetry.scripts]
+imfun = "imfun.app:main"
+
 [tool.black]
 line-length = 79
 target-version = ['py38']

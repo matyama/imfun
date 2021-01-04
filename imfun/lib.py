@@ -33,6 +33,7 @@ def color_quantization(img: np.ndarray, ncolors: int) -> np.ndarray:
 def convert(
     img: np.ndarray, line_size: int = 7, blur_value: int = 7, ncolors: int = 9
 ) -> np.ndarray:
+    """Converts an image to cartoon styled image"""
     # Create edge mask
     edges = edge_mask(img, line_size, blur_value)
 
@@ -45,3 +46,13 @@ def convert(
 
     # Combine edge mask with the colored image
     return cv2.bitwise_and(blurred, blurred, mask=edges)
+
+
+def img2cartoon(in_img: str, out_img: str) -> None:
+    """
+    Reads an original image from `in_img` path, converts it to a cartoon
+    and saves it to `out_img` path.
+    """
+    img = cv2.imread(in_img)
+    cartoon_img = convert(img)
+    cv2.imwrite(out_img, cartoon_img)

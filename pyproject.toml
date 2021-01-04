@@ -63,7 +63,7 @@ skip_glob = [".ipynb_checkpoints", "**/.ipynb_checkpoints"]
 
 [tool.pytest.ini_options]
 addopts = "--strict-markers --verbose --doctest-modules --cov=imfun"
-testpaths = ["imfun"]
+testpaths = ["imfun", "tests"]
 
 [build-system]
 requires = ["poetry-core>=1.0.0a5"]

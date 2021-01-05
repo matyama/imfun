@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "imfun"
-version = "0.1.0"
+version = "0.1.1"
 description = "Convert an image to cartoon"
 authors = ["Martin Matyášek <martin.matyasek@gmail.com>"]
 license = "MIT"
@@ -16,6 +16,7 @@ classifiers = [
     "Topic :: Multimedia :: Graphics :: Graphics Conversion",
     "Topic :: Utilities"
 ]
+include = ["examples/*"]
 
 [tool.poetry.dependencies]
 python = "^3.8"

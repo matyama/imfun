@@ -5,6 +5,17 @@ description = "Convert an image to cartoon"
 authors = ["Martin Matyášek <martin.matyasek@gmail.com>"]
 license = "MIT"
 readme = "README.md"
+repository = "https://github.com/matyama/imfun"
+keywords = ["image-processing", "opencv", "for-fun"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: Console",
+    "Operating System :: Unix",
+    "Topic :: Multimedia",
+    "Topic :: Multimedia :: Graphics",
+    "Topic :: Multimedia :: Graphics :: Graphics Conversion",
+    "Topic :: Utilities"
+]
 
 [tool.poetry.dependencies]
 python = "^3.8"
